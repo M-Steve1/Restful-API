@@ -10,13 +10,13 @@ describe('Article router', () => {
   });
   beforeAll(() => {
     request
-    .post('/articles/create')
-    .send({
-      title: 'cors',
-      content:
-        'Cors means Cross Origin Resource Sharing. If an application front-end and back-end does not have the same URL domain then the client domain will have to be white-listed in Cors API in order for it to have access.'
-    })
-    .expect(201);
+      .post('/articles/create')
+      .send({
+        title: 'cors',
+        content:
+          'Cors means Cross Origin Resource Sharing. If an application front-end and back-end does not have the same URL domain then the client domain will have to be white-listed in Cors API in order for it to have access.'
+      })
+      .expect(201);
   });
   it('Expect to return the specified article with 200 status code', async () => {
     const response = await request.get('/articles/1');

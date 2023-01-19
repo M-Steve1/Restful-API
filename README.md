@@ -39,6 +39,10 @@ testing done with jasmine.
 - Create table `db-migrate up`
 - Drop table `db-migrate down`
 
+#### Development
+
+- Setup database for development and make sure it tallys with the one on source code
+
 start script:
 
 ```
@@ -47,29 +51,32 @@ start script:
  }
 ```
 
-### Using Postman
+#### Testing
 
-##### Endpoints
+- Setup database for testing and make sure it tally with the one on source code
+- Testing scripts:
+
+```
+ "scripts": {
+    "build": "npx tsc",
+    "test": "set ENV=test && db-migrate --env test up && npm run build && jasmine"
+  },
+```
+
+## API Endpoints
 
 - `articleRouter.get("/articles", showAll);`
 - `articleRouter.post("/articles/create", createArticle);`
 - `articleRouter.get("/articles/:id", findByID);`
 - `articleRouter.delete("/articles/delete/:id", deleteArticle);`
 
-#### Testing
+## Data Shapes
 
-- Update ENV variable in '.dot' file from 'env' to 'test'
-- Setup database for testing and make sure it tally with the one on source code
-- Edit spec file(s) and variables for testing
-- Testing scripts:
+#### Articles
 
-```
- "scripts": {
-    "build": "npx tsc",
-    "test_endpoint": "db-migrate --env test up && npm run build && jasmine",
-    "test": "set ENV=test && db-migrate --env test up && npm run build && jasmine"
-  },
-```
+- id SERIAL PRIMARY KEY
+- title VARCHAR
+- content text
 
 #### Formatting
 

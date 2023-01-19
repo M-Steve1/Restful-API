@@ -33,7 +33,7 @@ export const createArticle = async (
   res: express.Response
 ): Promise<void> => {
   try {
-    const {title, content} = req.body;
+    const { title, content } = req.body;
     const article: Article = {
       title: title,
       content: content
