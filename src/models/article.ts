@@ -1,7 +1,7 @@
 import Client from '../database';
 
 export type Article = {
-  id?: number;
+  id?: string | number;
   title: string;
   content: string;
 };
@@ -22,7 +22,7 @@ export class ArticleStore {
     }
   }
 
-  async show(id: number): Promise<Article> {
+  async show(id: number | string): Promise<Article> {
     try {
       const sql = 'SELECT * FROM articles WHERE id=($1)';
       const conn = await Client.connect();
@@ -56,7 +56,7 @@ export class ArticleStore {
     }
   }
 
-  async delete(id: number): Promise<Article> {
+  async delete(id: number | string): Promise<Article> {
     try {
       const sql = 'DELETE FROM articles WHERE id=($1) RETURNING *';
       const conn = await Client.connect();
