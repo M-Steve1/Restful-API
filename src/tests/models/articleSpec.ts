@@ -16,7 +16,7 @@ describe('Article model', () => {
     expect(store.delete).toBeDefined();
   });
 
-  it('Create method should add a new article', async () => {
+  beforeAll(async () => {
     const result = await store.create({
       title: 'cors',
       content:
@@ -49,10 +49,10 @@ describe('Article model', () => {
         'Cors means Cross Origin Resource Sharing. If an application front-end and back-end does not have the same URL domain then the client domain will have to be white-listed in Cors API in order for it to have access.'
     });
   });
-  it('Should delete article with the ID provided', async () => {
-    const result = await store.delete(3);
+  afterAll(async () => {
+    const result = await store.delete(1);
     expect(result).toEqual({
-      id: 3,
+      id: 1,
       title: 'cors',
       content:
         'Cors means Cross Origin Resource Sharing. If an application front-end and back-end does not have the same URL domain then the client domain will have to be white-listed in Cors API in order for it to have access.'

@@ -3,21 +3,27 @@ import app from '../../server';
 
 const request = supertest(app);
 
-fdescribe('Testing article routers', () => {
+describe('Article router', () => {
   it('Expect route displaying all articles to return 200 status code', async () => {
     const response = await request.get('/articles');
     expect(response.statusCode).toBe(200);
   });
-  it('Expect to create a new article with 201 status code', async () => {
-    const response = await request.post('/articles/create');
-    expect(response.statusCode).toBe(201);
+  beforeAll(() => {
+    request
+    .post('/articles/create')
+    .send({
+      title: 'cors',
+      content:
+        'Cors means Cross Origin Resource Sharing. If an application front-end and back-end does not have the same URL domain then the client domain will have to be white-listed in Cors API in order for it to have access.'
+    })
+    .expect(201);
   });
   it('Expect to return the specified article with 200 status code', async () => {
     const response = await request.get('/articles/1');
     expect(response.statusCode).toBe(200);
   });
-  it('Expect to delete the specified article with 200 status code', async () => {
-    const response = await request.delete('/articles/delete/2');
+  afterAll(async () => {
+    const response = await request.delete('/articles/delete/1');
     expect(response.statusCode).toBe(200);
   });
 });
