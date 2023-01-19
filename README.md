@@ -1,13 +1,13 @@
 # RESTful API with Postgres and Express
 
-This project simply demostrate how to create a RESTful
+This project simply demonstrates how to create a RESTful
 API with Postgres and Express, transpiled from
 typescript to javascript. This project also contain integration
 testing done with jasmine.
 
 ## Intallation
 
-`    $ npm install                      `
+`$ npm install                  `
 
 ## Usage
 
@@ -59,7 +59,7 @@ start script:
 #### Testing
 
 - Update ENV variable in '.dot' file from 'env' to 'test'
-- Setup database for testing and make sure it tallys with the one on source code
+- Setup database for testing and make sure it tally with the one on source code
 - Edit spec file(s) and variables for testing
 - Testing scripts:
 
@@ -67,7 +67,7 @@ start script:
  "scripts": {
     "build": "npx tsc",
     "test_endpoint": "db-migrate --env test up && npm run build && jasmine",
-    "test": "db-migrate --env test up && npm run build && jasmine && db-migrate db:drop article_test"
+    "test": "set ENV=test && db-migrate --env test up && npm run build && jasmine"
   },
 ```
 

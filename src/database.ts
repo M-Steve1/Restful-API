@@ -4,20 +4,18 @@ const { host, envDB, user, password, port, testDB, env } = dbInfo;
 
 let client;
 
-if (env === 'test') {
+if (env === 'dev') {
   client = new Pool({
     host: host,
-    database: testDB,
+    database: envDB,
     user: user,
     password: password,
     port: port
   });
-}
-
-if (env === 'env') {
+} else {
   client = new Pool({
     host: host,
-    database: envDB,
+    database: testDB,
     user: user,
     password: password,
     port: port
